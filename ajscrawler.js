@@ -1,6 +1,6 @@
 var ajscrawler = function ajscrawler(readyStateChangeHandler, document) {
     if (!document) document = window.document;
-    var links = (function getlinks() {
+    var getlinks = function (document) {
         var atags = document.querySelectorAll("a");
         var links = [];
         var i = 0;
@@ -21,7 +21,9 @@ var ajscrawler = function ajscrawler(readyStateChangeHandler, document) {
             continue;
         };
         return links;
-    })();
+    };
+    var links = getlinks(document);
+
     var xhr = null;
     var i = 0;
     for (i = 0; i < links.length; ++i) {

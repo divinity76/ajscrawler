@@ -1,5 +1,5 @@
-var ajscrawler = function ajscrawler(readyStateChangeHandler) {
-
+var ajscrawler = function ajscrawler(readyStateChangeHandler, document) {
+    if (!document) document = window.document;
     var links = (function getlinks() {
         var atags = document.querySelectorAll("a");
         var links = [];

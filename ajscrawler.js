@@ -31,8 +31,7 @@ var ajscrawler = function ajscrawler(readyStateChangeHandler, document) {
         xhr.open("GET", links[i], true);
         xhr.addEventListener("readystatechange", readyStateChangeHandler);
         xhr.send();
-        xhr.x_send_time = (new Date())
-            .getTime();
+        xhr.x_send_time = Date.now();
         xhr.x_url = links[i];
     }
     return true;

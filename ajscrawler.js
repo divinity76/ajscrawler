@@ -1,4 +1,5 @@
 var ajscrawler = function ajscrawler(readyStateChangeHandler, document) {
+            var errors=[];
     if (!document) document = window.document;
     var getlinks = function (document) {
         var atags = document.querySelectorAll("a");
@@ -7,7 +8,6 @@ var ajscrawler = function ajscrawler(readyStateChangeHandler, document) {
         var tmpstr = "";
         var tmparr = [];
         var rex = /([^#]+)/;
-        var errors=[];
         for (i = 0; i < atags.length; ++i) {
             tmpstr = atags[i].href;
             tmparr = rex.exec(atags[i].href);

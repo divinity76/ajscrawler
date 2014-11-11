@@ -7,6 +7,7 @@ var ajscrawler = function ajscrawler(readyStateChangeHandler, document) {
         var tmpstr = "";
         var tmparr = [];
         var rex = /([^#]+)/;
+        var errors=[];
         for (i = 0; i < atags.length; ++i) {
             tmpstr = atags[i].href;
             tmparr = rex.exec(atags[i].href);
@@ -35,10 +36,10 @@ var ajscrawler = function ajscrawler(readyStateChangeHandler, document) {
         xhr.x_send_time = Date.now();
         xhr.x_url = links[i];
         }catch(ex){
-            console.log("warning: ignoring url "+links[i].toString(),ex.toString());
+            errors.push(ex);
         }
     }
-    return true;
+    return errors;
 };
 
 

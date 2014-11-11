@@ -27,12 +27,16 @@ var ajscrawler = function ajscrawler(readyStateChangeHandler, document) {
     var xhr = null;
     var i = 0;
     for (i = 0; i < links.length; ++i) {
+        try{
         xhr = new XMLHttpRequest();
         xhr.open("GET", links[i], true);
         xhr.addEventListener("readystatechange", readyStateChangeHandler);
         xhr.send();
         xhr.x_send_time = Date.now();
         xhr.x_url = links[i];
+        }catch(ex){
+            console.log("warning: ignoring url "+links[i].toString(),ex.toString());
+        }
     }
     return true;
 };
